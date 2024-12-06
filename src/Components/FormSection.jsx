@@ -30,13 +30,13 @@ const FormSection = ({ emailIdToSendMail, sourceName }) => {
       setSpinner(true);
 
       const googleFormURL =
-        "https://script.google.com/macros/s/AKfycbwE3XpXO4D36yHKqo6J8BVrFzLTQuR18-To_-VdgDTjBKQQcMS6UB7_-ZX6TQ1EPH8/exec";
+        "https://script.google.com/macros/s/AKfycbxB01P65tI2n7WAJpd_4aHJyJV5OBKCnNl8fAmDGKebrs9F51WTPBe9B3g_I2VYvFI/exec";
 
       // Construct URLSearchParams instead of FormData
       const googleFormData = new URLSearchParams();
       googleFormData.append("Name", values.name);
       googleFormData.append("Email", values.email);
-      googleFormData.append("Phone", values.phone);
+      googleFormData.append("MobileNumber", values.phone);
 
       // Send POST request with the correct headers
       const res = await fetch(googleFormURL, {
