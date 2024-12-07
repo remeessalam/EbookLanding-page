@@ -8,7 +8,7 @@ import ReactPlayer from "react-player";
 import FormSection from "../Components/FormSection";
 import { saveAs } from "file-saver";
 import ebook from "../assets/ebook/Building an AI Business Navigating the Roadmaps-.pdf";
-
+import ebookcover from "../assets/images/ebookcover.jpg";
 import { aiExpertAccesses, subscriptionBenefits } from "../constant";
 // import PopupForm from "../../components/landingPage/PopupForm";
 const Banner = lazy(() => import("../Components/EbookBanner"));
@@ -185,13 +185,54 @@ const Ebook = ({ path, emailIdToSendMail }) => {
 
         <section data-aos="fade-up" className="section-pt">
           {/* <Roadmap /> */}
-          <div className="w-full flex justify-center">
-            <button
+          <div className="wrapper w-full flex justify-center">
+            <div className="max-w-3xl mx-auto p-6 bg-black text-white flex flex-col items-center">
+              <div className="mb-6 bg-black rounded-lg overflow-hidden shadow-lg">
+                {/* Book Preview Card */}
+                <div className=" w-full relative bg-gray-800">
+                  <img
+                    src={ebookcover}
+                    alt="Book Cover"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                </div>
+
+                {/* Book Info */}
+                <div className="p-4">
+                  <h2 className="text-xl font-bold mb-2">The Ultimate Guide</h2>
+                  <p className="text-gray-300 text-sm mb-4">
+                    Discover the secrets of success with this comprehensive
+                    guide that will transform your approach to personal and
+                    professional growth.
+                  </p>
+
+                  {/* Book Stats */}
+                  <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
+                    <div className="flex items-center">
+                      {/* <BookOpen className="w-4 h-4 mr-1" /> */}
+                      <span>12 pages</span>
+                    </div>
+                    <div>PDF Format</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Download Button */}
+              <button
+                onClick={downloadEbook}
+                className="primary-btn font-medium w-fit  lg:flex justify-center py-2 sm:py-3 sm:mt-5"
+              >
+                Download E-Book
+              </button>
+            </div>
+
+            {/* <button
               onClick={downloadEbook}
               className="primary-btn font-medium w-fit hidden lg:flex justify-center py-3 mt-5"
             >
               Download E-Book
-            </button>
+            </button> */}
           </div>
           <h1 className="text-[2.7rem] leading-[3rem] md:text-5xl font-semibold text-primary text-center mt-20">
             Bring your dream company to life.
