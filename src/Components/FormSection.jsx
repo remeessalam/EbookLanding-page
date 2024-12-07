@@ -8,7 +8,7 @@ const sources = ["LinkedIn", "Twitter", "Meta"];
 const FormSection = ({ emailIdToSendMail, sourceName }) => {
   const [isFormSubmit, setIsFormSubmit] = useState(false);
 
-  const { setSpinner } = useContext(SpinnerContext);
+  const { setSpinner, spinner } = useContext(SpinnerContext);
   const {
     register,
     handleSubmit,
@@ -180,7 +180,7 @@ const FormSection = ({ emailIdToSendMail, sourceName }) => {
               <small className="text-red-600">{errors.phone?.message}</small>
             </div>
             <button type="submit" className="primary-btn1 mt-3">
-              Submit
+              {spinner ? "Sending..." : "Submit"}
             </button>
           </form>
           {isFormSubmit && (
