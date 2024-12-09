@@ -5,15 +5,9 @@ import "keen-slider/keen-slider.min.css";
 import EbookLoadingSpinner from "./Components/EbookLoadingSpinner";
 import SpinnerContextProvider from "./Components/EbookSpinnerContext";
 import { Toaster } from "react-hot-toast";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 // App component with routing
 const App = () => {
-  AOS.init({
-    once: true,
-    duration: 500,
-    offset: -50,
-  });
   return (
     <SpinnerContextProvider>
       <Toaster
