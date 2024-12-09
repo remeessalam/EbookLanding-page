@@ -55,8 +55,8 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
 
       // Construct the request payload
       var payload = {
-        to: "remeesreme4u@gmail.com",
-        subject: "Form Submission - Boostmysites AI Expert",
+        to: "ceo@boostmysites.com",
+        subject: "Form Submission - Boostmysites E-Book Lead",
         body: emailBody,
       };
 

@@ -33,11 +33,11 @@ const EbookBanner = ({ introVidIsPlaying, setIntroVidIsPlaying, path }) => {
         <div className="flex flex-col gap-3 items-start text-center lg:text-start">
           <h1
             data-aos="zoom-in"
-            className="text-[2.7rem] text-balance leading-[3rem] md:text-5xl font-semibold text-primary"
+            className="text-[2.5rem] text-balance leading-[3rem] md:text-5xl font-semibold text-primary"
           >
-            Free E-book and kickstart your entrepreneurial journey today!
+            Download E-book and kickstart your entrepreneurial journey today!
           </h1>
-          <ul className="tracking-widest text-white list-disc list-inside">
+          <ul className="tracking-widest text-white list-disc list-inside text-start">
             <li>Exclusive insights to build your dream business</li>
             <li>Proven strategies for success</li>
             <li>And so much more!</li>
@@ -61,6 +61,12 @@ const EbookBanner = ({ introVidIsPlaying, setIntroVidIsPlaying, path }) => {
           >
             Download E-Book
           </button>
+          <button
+            onClick={downloadEbook}
+            className="primary-btn font-medium w-[17rem] flex mx-auto lg:hidden justify-center py-3 mt-2"
+          >
+            Download E-Book
+          </button>
         </div>
 
         <div className="w-full flex justify-center" data-aos="fade-up">
@@ -68,12 +74,6 @@ const EbookBanner = ({ introVidIsPlaying, setIntroVidIsPlaying, path }) => {
             <EbookForm />
           </div>
         </div>
-        <button
-          onClick={downloadEbook}
-          className="primary-btn font-medium w-[17rem] flex mx-auto lg:hidden justify-center py-3 mt-2"
-        >
-          Download E-Book
-        </button>
       </div>
     </div>
   );

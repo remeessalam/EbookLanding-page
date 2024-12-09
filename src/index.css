@@ -7,7 +7,7 @@
 
 @layer utilities {
   .wrapper {
-    @apply max-w-7xl mx-auto px-4 md:px-8;
+    @apply max-w-7xl mx-auto px-2 sm:px-4 md:px-8;
   }
   .primary-btn {
     @apply text-sm font-medium cursor-pointer bg-gradient-to-r from-primary to-[#D5AA12] hover:-translate-y-1 shadow-large shadow-transparent hover:shadow-primary/[35%] text-black border border-primary py-3 px-4 rounded-md transition-all duration-300;
