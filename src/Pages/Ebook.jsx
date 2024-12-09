@@ -77,7 +77,7 @@ const Ebook = ({ path, emailIdToSendMail }) => {
         <FeaturedIn />
       </section>
       <div className="wrapper">
-        <section
+        {/* <section
           id="features"
           className="flex flex-col items-center justify-center gap-10 text-center section-pt"
         >
@@ -114,7 +114,7 @@ const Ebook = ({ path, emailIdToSendMail }) => {
               );
             })}
           </div>
-        </section>
+        </section> */}
 
         <section className="section-pt flex flex-col items-center justify-center text-center gap-10">
           <h1
