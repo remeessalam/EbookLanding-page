@@ -271,12 +271,12 @@ const Ebook = ({ path, emailIdToSendMail }) => {
           </Link>
           <JoinEntrepreneurs />
         </div> */}
-        <div className="wrapper">
+        {/* <div className="wrapper">
           <FormSection
             sourceName={sourceName}
             emailIdToSendMail={emailIdToSendMail}
           />
-        </div>
+        </div> */}
       </section>
       <div className="wrapper">
         <section data-aos="fade-up" className="">
