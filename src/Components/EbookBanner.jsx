@@ -38,9 +38,11 @@ const EbookBanner = ({ introVidIsPlaying, setIntroVidIsPlaying, path }) => {
             Download E-book and kickstart your entrepreneurial journey today!
           </h1>
           <ul className="tracking-widest text-white list-disc list-inside text-start">
-            <li>Exclusive insights to build your dream business</li>
-            <li>Proven strategies for success</li>
-            <li>And so much more!</li>
+            <li data-aos="fade-up">
+              Exclusive insights to build your dream business
+            </li>
+            <li data-aos="fade-up">Proven strategies for success</li>
+            <li data-aos="fade-up">And so much more!</li>
           </ul>
           {/* <p className="tracking-widest text-white">
             With our trusted infrastructure and expert team by your side,
@@ -48,6 +50,7 @@ const EbookBanner = ({ introVidIsPlaying, setIntroVidIsPlaying, path }) => {
           </p> */}
           <div className="max-w-[25rem] w-full relativerounded-xl">
             <img
+              data-aos="fade-up"
               src={ebookcover}
               alt="Book Cover"
               className="w-full h-full object-cover rounded-xl"
@@ -56,12 +59,14 @@ const EbookBanner = ({ introVidIsPlaying, setIntroVidIsPlaying, path }) => {
           </div>
 
           <button
+            data-aos="fade-up"
             onClick={downloadEbook}
             className="primary-btn font-medium w-fit hidden lg:flex justify-center py-3 mt-5"
           >
             Download E-Book
           </button>
           <button
+            data-aos="fade-up"
             onClick={downloadEbook}
             className="primary-btn font-medium w-[17rem] flex mx-auto lg:hidden justify-center py-3 mt-2"
           >
