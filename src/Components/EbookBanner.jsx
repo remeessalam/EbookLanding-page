@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import ReactPlayer from "react-player";
@@ -10,23 +10,39 @@ import ebook from "../assets/ebook/Building an AI Business Navigating the Roadma
 import { BiPlay } from "react-icons/bi";
 import EbookForm from "./EbookForm";
 import ebookcover from "../assets/images/ebookcover.jpg";
-const EbookBanner = ({ introVidIsPlaying, setIntroVidIsPlaying, path }) => {
+const EbookBanner = ({
+  introVidIsPlaying,
+  setIntroVidIsPlaying,
+  path,
+  ref,
+  setScaleForm,
+  scaleForm,
+}) => {
   const navigate = useNavigate();
   const [isVideoLoading, setIsVideoLoading] = useState(true);
   const { pathname } = useLocation();
-
+  const ebookFormRef = useRef(null);
   const handlePlayVideo = () => {
     setIntroVidIsPlaying(!introVidIsPlaying);
   };
   const downloadEbook = () => {
-    saveAs(ebook, "Building an AI Business Navigating the Roadmaps.pdf"); // Path to the file and the desired filename
+    // saveAs(ebook, "Building an AI Business Navigating the Roadmaps.pdf"); // Path to the file and the desired filename
+    setScaleForm(true);
+    ebookFormRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+
+    ebookFormRef.current?.classList.add("scale-effect");
+
+    setTimeout(() => {
+      ebookFormRef.current?.classList.remove("scale-effect");
+    }, 500);
+    setTimeout(() => {
+      setScaleForm(false);
+    }, 4100);
   };
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleBook = () => {
-    setIsOpen(!isOpen);
-  };
   return (
     <div className="h-full flex-col wrapper relative z-10 flex items-start pt-[10rem] pb-[5rem] lg:pb-0 lg:pt-[5%]">
       <div className="grid lg:grid-cols-2 gap-[2rem] items-start">
@@ -75,7 +91,12 @@ const EbookBanner = ({ introVidIsPlaying, setIntroVidIsPlaying, path }) => {
         </div>
 
         <div className="w-full flex justify-center" data-aos="fade-up">
-          <div className="intro-vid  w-full relative  px-5 py-6 backdrop-blur-sm rounded-[1rem] bg-white/10">
+          <div
+            ref={ebookFormRef}
+            className={`${
+              scaleForm && `animatiolnscale `
+            } intro-vid  w-full relative  px-5 py-6 backdrop-blur-sm rounded-[1rem] bg-white/10`}
+          >
             <EbookForm />
           </div>
         </div>

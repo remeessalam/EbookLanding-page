@@ -1,4 +1,4 @@
-import { lazy, useEffect } from "react";
+import { lazy, useEffect, useRef } from "react";
 import { BsHeartFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -24,7 +24,10 @@ const OurOffices = lazy(() => import("../Components/EbookOurOffices"));
 const Ebook = ({ path, emailIdToSendMail }) => {
   const [introVidIsPlaying, setIntroVidIsPlaying] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [scaleForm, setScaleForm] = useState(false);
 
+  const ebookFormRef = useRef(null);
+  const reftotop = useRef(null);
   useEffect(() => {
     const popupShown = localStorage.getItem("popupFormShown");
     if (!popupShown) {
@@ -42,7 +45,15 @@ const Ebook = ({ path, emailIdToSendMail }) => {
   }
 
   const downloadEbook = () => {
-    saveAs(ebook, "Building an AI Business Navigating the Roadmaps.pdf"); // Path to the file and the desired filename
+    // saveAs(ebook, "Building an AI Business Navigating the Roadmaps.pdf"); // Path to the file and the desired filename
+    setScaleForm(true);
+    reftotop.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+    setTimeout(() => {
+      setScaleForm(false);
+    }, 4100);
   };
   return (
     <div className="landing-page relative" id="home">
@@ -65,11 +76,14 @@ const Ebook = ({ path, emailIdToSendMail }) => {
             pip={false}
           />
         </div>
-        <div className="wrapper h-fit">
+        <div ref={reftotop} className="wrapper h-fit">
           <Banner
             introVidIsPlaying={introVidIsPlaying}
             setIntroVidIsPlaying={setIntroVidIsPlaying}
             path={path}
+            ref={ebookFormRef}
+            setScaleForm={setScaleForm}
+            scaleForm={scaleForm}
           />
         </div>
       </div>

@@ -366,3 +366,20 @@ body {
   padding: 0 10px 1rem 10px;
   color: #ffffff;
 }
+
+.animatiolnscale {
+  animation: scaleanimation 2.1s infinite;
+}
+
+/* Define the keyframes for the scale and rotate effect */
+@keyframes scaleanimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

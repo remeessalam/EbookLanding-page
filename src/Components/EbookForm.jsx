@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { SpinnerContext } from "./EbookSpinnerContext";
+import ebook from "../assets/ebook/Building an AI Business Navigating the Roadmaps-.pdf";
+import axios from "axios";
 
 const sources = ["LinkedIn", "Twitter", "Meta"];
 const EbookForm = ({ emailIdToSendMail, sourceName }) => {
@@ -34,7 +36,7 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
       const googleFormData = new URLSearchParams();
       googleFormData.append("Name", values.name);
       googleFormData.append("Email", values.email);
-      googleFormData.append("MobileNumber", values.phone);
+      googleFormData.append("MobileNumber", "91-" + values.phone);
 
       // Send POST request with the correct headers
       const res = await fetch(googleFormURL, {
@@ -45,6 +47,10 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
         },
       });
       console.log(res);
+      //whatapp automation start here
+
+      // Endwhatapp automation start here
+
       var emailBody = "Name: " + values.name + "\n\n";
       emailBody += "Email: " + values.email + "\n\n";
       emailBody += "Phone Number: " + values.phone + "\n\n";
@@ -56,6 +62,7 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
       // Construct the request payload
       var payload = {
         to: "ceo@boostmysites.com",
+        // to: "remeesreme4u@gmail.com",
         subject: "Form Submission - Boostmysites E-Book Lead",
         body: emailBody,
       };
@@ -73,7 +80,7 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
           if (res.error) {
             toast.error(res.error);
           } else {
-            toast.success("Email sent successfully");
+            toast.success("Form submitted successfully.");
             setIsFormSubmit(true);
             reset();
           }

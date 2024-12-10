@@ -36,7 +36,7 @@ const FormSection = ({ emailIdToSendMail, sourceName }) => {
       const googleFormData = new URLSearchParams();
       googleFormData.append("Name", values.name);
       googleFormData.append("Email", values.email);
-      googleFormData.append("MobileNumber", values.phone);
+      googleFormData.append("MobileNumber", "91-" + values.phone);
 
       // Send POST request with the correct headers
       const res = await fetch(googleFormURL, {
@@ -58,6 +58,7 @@ const FormSection = ({ emailIdToSendMail, sourceName }) => {
       // Construct the request payload
       var payload = {
         to: "ceo@boostmysites.com",
+        // to: "remeesreme4u@gmail.com",
         subject: "Form Submission - Boostmysites E-Book Lead",
         body: emailBody,
       };
@@ -75,7 +76,7 @@ const FormSection = ({ emailIdToSendMail, sourceName }) => {
           if (res.error) {
             toast.error(res.error);
           } else {
-            toast.success("Email sent successfully");
+            toast.success("Form submitted successfully");
             setIsFormSubmit(true);
 
             reset();
