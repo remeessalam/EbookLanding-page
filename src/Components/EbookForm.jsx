@@ -30,13 +30,13 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
       setSpinner(true);
 
       const googleFormURL =
-        "https://script.google.com/macros/s/AKfycbxB01P65tI2n7WAJpd_4aHJyJV5OBKCnNl8fAmDGKebrs9F51WTPBe9B3g_I2VYvFI/exec";
-
+        // "https://script.google.com/macros/s/AKfycbxB01P65tI2n7WAJpd_4aHJyJV5OBKCnNl8fAmDGKebrs9F51WTPBe9B3g_I2VYvFI/exec";
+        "https://script.google.com/a/macros/boostmysites.com/s/AKfycby1Us-7Kh2gIByHzHKTmG4zGC-dbg4GQGbhyT4B5Pzz-ioylL_eazeKlVJhnqat_Y4/exec";
       // Construct URLSearchParams instead of FormData
       const googleFormData = new URLSearchParams();
-      googleFormData.append("Name", values.name);
-      googleFormData.append("Email", values.email);
-      googleFormData.append("MobileNumber", "91-" + values.phone);
+      googleFormData.append("NAME", values.name);
+      googleFormData.append("EMAILID", values.email);
+      googleFormData.append("WHATSAPP", "91" + values.phone);
 
       // Send POST request with the correct headers
       const res = await fetch(googleFormURL, {
@@ -148,7 +148,8 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
               required: "Phone is required",
               pattern: {
                 value: /^[1-9]\d{9}$/i,
-                message: "Please enter a valid phone number",
+                message:
+                  "Enter a valid 10-digit phone number without special characters.",
               },
             })}
           />
