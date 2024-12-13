@@ -37,6 +37,10 @@ const FormSection = ({ emailIdToSendMail, sourceName }) => {
       googleFormData.append("NAME", values.name);
       googleFormData.append("EMAILID", values.email);
       googleFormData.append("WHATSAPP", "91" + values.phone);
+      const pabbly = new URLSearchParams();
+      pabbly.append("name", values.name);
+      pabbly.append("email", values.email);
+      pabbly.append("whatsapp", "91" + values.phone);
 
       // Send POST request with the correct headers
       const res = await fetch(googleFormURL, {
@@ -46,7 +50,17 @@ const FormSection = ({ emailIdToSendMail, sourceName }) => {
           "Content-Type": "application/x-www-form-urlencoded", // Ensure content type is correct
         },
       });
-      console.log(res);
+      const res2 = await fetch(
+        "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0Mzc1MjZmNTUzMzUxMzAi_pc",
+        {
+          method: "POST",
+          body: pabbly,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded", // Ensure content type is correct
+          },
+        }
+      );
+      console.log(res2, res);
       var emailBody = "Name: " + values.name + "\n\n";
       emailBody += "Email: " + values.email + "\n\n";
       emailBody += "Phone Number: " + values.phone + "\n\n";

@@ -46,7 +46,22 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
           "Content-Type": "application/x-www-form-urlencoded", // Ensure content type is correct
         },
       });
-      console.log(res);
+      const pabbly = new URLSearchParams();
+      pabbly.append("name", values.name);
+      pabbly.append("email", values.email);
+      pabbly.append("whatsapp", "91" + values.phone);
+
+      const res2 = await fetch(
+        "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0Mzc1MjZmNTUzMzUxMzAi_pc",
+        {
+          method: "POST",
+          body: pabbly,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded", // Ensure content type is correct
+          },
+        }
+      );
+      console.log(res, res2);
       //whatapp automation start here
 
       // Endwhatapp automation start here
@@ -97,6 +112,7 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
   return (
     <div>
       <form
+        // action="https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0Mzc1MjZmNTUzMzUxMzAi_pc"
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-2 mt-3 text-white"
       >
