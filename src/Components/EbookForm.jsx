@@ -30,11 +30,7 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
       setSpinner(true);
 
       const googleFormURL =
-        // "https://script.google.com/macros/s/AKfycbxB01P65tI2n7WAJpd_4aHJyJV5OBKCnNl8fAmDGKebrs9F51WTPBe9B3g_I2VYvFI/exec";
-        // "https://script.google.com/macros/s/AKfycbwy4zrx09tgOiHPlW-lHSHNmeKFbRwhR8z4DzaMlycBpnYsFaPQOtzTycOBNKnj_szK/exec";
-        // "https://script.google.com/macros/s/AKfycbxm_Mc4_LJ3O55X2mmdFrFPAKxMUHUcLOunp1Ay08OoQfClnse0wAUBu_FllxsquZm-/exec";
-        "https://script.google.com/macros/s/AKfycbw106fWm_XhebRaRXcpgMLQ5qY74ZDBQ6SbATdj9M1XCOqZi2k6dj10iSO2t1YBlCE/exec";
-      // "https://script.google.com/macros/s/AKfycbwOczpsQ5_r6csympLPUhgB6jg014oK-Gizos2MBOEJGoNHYDFztLMy5sYsc6Q69EYl/exec";
+        "https://script.google.com/macros/s/AKfycbw3iIea2KQGmurFIovK1AqWJLlv3c2eIzcUTWSl-454DGe8en5eexOVPLDCCx0bdWk/exec";
       const googleFormData = new URLSearchParams();
       googleFormData.append("NAME", values.name);
       googleFormData.append("EMAILID", values.email);
@@ -47,7 +43,7 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded", // Ensure content type is correct
         },
-        redirect: "follow",
+        // redirect: "follow",
       });
       const pabbly = new URLSearchParams();
       pabbly.append("name", values.name);
