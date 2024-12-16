@@ -35,7 +35,8 @@ const FormSection = ({ emailIdToSendMail, sourceName }) => {
         // "https://script.google.com/macros/s/AKfycbwy4zrx09tgOiHPlW-lHSHNmeKFbRwhR8z4DzaMlycBpnYsFaPQOtzTycOBNKnj_szK/exec";
         // Construct URLSearchParams instead of FormData
         // "https://script.google.com/macros/s/AKfycbxm_Mc4_LJ3O55X2mmdFrFPAKxMUHUcLOunp1Ay08OoQfClnse0wAUBu_FllxsquZm-/exec";
-        "https://script.google.com/macros/s/AKfycbwOczpsQ5_r6csympLPUhgB6jg014oK-Gizos2MBOEJGoNHYDFztLMy5sYsc6Q69EYl/exec";
+        "https://script.google.com/macros/s/AKfycbw106fWm_XhebRaRXcpgMLQ5qY74ZDBQ6SbATdj9M1XCOqZi2k6dj10iSO2t1YBlCE/exec";
+      // "https://script.google.com/macros/s/AKfycbwOczpsQ5_r6csympLPUhgB6jg014oK-Gizos2MBOEJGoNHYDFztLMy5sYsc6Q69EYl/exec";
       const googleFormData = new URLSearchParams();
       googleFormData.append("NAME", values.name);
       googleFormData.append("EMAILID", values.email);
