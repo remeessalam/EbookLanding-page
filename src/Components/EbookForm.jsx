@@ -30,7 +30,8 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
       setSpinner(true);
 
       const googleFormURL =
-        "https://script.google.com/macros/s/AKfycbw3iIea2KQGmurFIovK1AqWJLlv3c2eIzcUTWSl-454DGe8en5eexOVPLDCCx0bdWk/exec";
+        "https://script.google.com/macros/s/AKfycbwISw7fAhbA1-t0UuEIvebDsl9pUt2DBa8s1n5fAyS5MuW6XORZ3sbHy_Rywpg3tzA/exec";
+      // "https://script.google.com/macros/s/AKfycbxeO9ipXgOmIGqKNrW4eW177Qlb2n2PqTPSY1RTrG7Hnpfowp9bALeJn7GJOytm1oQ/exec";
       const googleFormData = new URLSearchParams();
       googleFormData.append("NAME", values.name);
       googleFormData.append("EMAILID", values.email);
@@ -52,7 +53,8 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
 
       const res2 = await fetch(
         // "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0MzE1MjZlNTUzYzUxMzIi_pc",
-        "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0MzE1MjZlNTUzYzUxMzIi_pc",
+        // "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0MzE1MjZlNTUzYzUxMzIi_pc",
+
         {
           method: "POST",
           body: pabbly,
