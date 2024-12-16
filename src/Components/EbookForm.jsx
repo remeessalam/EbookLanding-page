@@ -31,8 +31,9 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
 
       const googleFormURL =
         // "https://script.google.com/macros/s/AKfycbxB01P65tI2n7WAJpd_4aHJyJV5OBKCnNl8fAmDGKebrs9F51WTPBe9B3g_I2VYvFI/exec";
-        "https://script.google.com/a/macros/boostmysites.com/s/AKfycby1Us-7Kh2gIByHzHKTmG4zGC-dbg4GQGbhyT4B5Pzz-ioylL_eazeKlVJhnqat_Y4/exec";
-      // Construct URLSearchParams instead of FormData
+        // "https://script.google.com/macros/s/AKfycbwy4zrx09tgOiHPlW-lHSHNmeKFbRwhR8z4DzaMlycBpnYsFaPQOtzTycOBNKnj_szK/exec";
+        // "https://script.google.com/macros/s/AKfycbxm_Mc4_LJ3O55X2mmdFrFPAKxMUHUcLOunp1Ay08OoQfClnse0wAUBu_FllxsquZm-/exec";
+        "https://script.google.com/macros/s/AKfycbwOczpsQ5_r6csympLPUhgB6jg014oK-Gizos2MBOEJGoNHYDFztLMy5sYsc6Q69EYl/exec";
       const googleFormData = new URLSearchParams();
       googleFormData.append("NAME", values.name);
       googleFormData.append("EMAILID", values.email);
@@ -45,6 +46,7 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded", // Ensure content type is correct
         },
+        redirect: "follow",
       });
       const pabbly = new URLSearchParams();
       pabbly.append("name", values.name);
@@ -52,7 +54,8 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
       pabbly.append("whatsapp", "91" + values.phone);
 
       const res2 = await fetch(
-        "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0Mzc1MjZmNTUzMzUxMzAi_pc",
+        // "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0MzE1MjZlNTUzYzUxMzIi_pc",
+        "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0MzE1MjZlNTUzYzUxMzIi_pc",
         {
           method: "POST",
           body: pabbly,
@@ -76,8 +79,8 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
 
       // Construct the request payload
       var payload = {
-        to: "ceo@boostmysites.com",
-        // to: "remeesreme4u@gmail.com",
+        // to: "ceo@boostmysites.com",
+        to: "remeesreme4u@gmail.com",
         subject: "Form Submission - Boostmysites E-Book Lead",
         body: emailBody,
       };

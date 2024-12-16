@@ -30,9 +30,12 @@ const FormSection = ({ emailIdToSendMail, sourceName }) => {
       setSpinner(true);
 
       const googleFormURL =
-        // "https://script.google.com/macros/s/AKfycbxB01P65tI2n7WAJpd_4aHJyJV5OBKCnNl8fAmDGKebrs9F51WTPBe9B3g_I2VYvFI/exec";
-        "https://script.google.com/a/macros/boostmysites.com/s/AKfycby1Us-7Kh2gIByHzHKTmG4zGC-dbg4GQGbhyT4B5Pzz-ioylL_eazeKlVJhnqat_Y4/exec";
-      // Construct URLSearchParams instead of FormData
+        // first one "https://script.google.com/macros/s/AKfycbxB01P65tI2n7WAJpd_4aHJyJV5OBKCnNl8fAmDGKebrs9F51WTPBe9B3g_I2VYvFI/exec";
+        // second one "https://script.google.com/a/macros/boostmysites.com/s/AKfycby1Us-7Kh2gIByHzHKTmG4zGC-dbg4GQGbhyT4B5Pzz-ioylL_eazeKlVJhnqat_Y4/exec";
+        // "https://script.google.com/macros/s/AKfycbwy4zrx09tgOiHPlW-lHSHNmeKFbRwhR8z4DzaMlycBpnYsFaPQOtzTycOBNKnj_szK/exec";
+        // Construct URLSearchParams instead of FormData
+        // "https://script.google.com/macros/s/AKfycbxm_Mc4_LJ3O55X2mmdFrFPAKxMUHUcLOunp1Ay08OoQfClnse0wAUBu_FllxsquZm-/exec";
+        "https://script.google.com/macros/s/AKfycbwOczpsQ5_r6csympLPUhgB6jg014oK-Gizos2MBOEJGoNHYDFztLMy5sYsc6Q69EYl/exec";
       const googleFormData = new URLSearchParams();
       googleFormData.append("NAME", values.name);
       googleFormData.append("EMAILID", values.email);
@@ -49,9 +52,13 @@ const FormSection = ({ emailIdToSendMail, sourceName }) => {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded", // Ensure content type is correct
         },
+        redirect: "follow",
       });
       const res2 = await fetch(
-        "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0Mzc1MjZmNTUzMzUxMzAi_pc",
+        // "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0Mzc1MjZmNTUzMzUxMzAi_pc",
+        // "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0MzE1MjZlNTUzYzUxMzIi_pc",
+        "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0MzE1MjZlNTUzYzUxMzIi_pc",
+
         {
           method: "POST",
           body: pabbly,
