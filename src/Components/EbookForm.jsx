@@ -30,7 +30,8 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
       setSpinner(true);
 
       const googleFormURL =
-        "https://script.google.com/macros/s/AKfycbwISw7fAhbA1-t0UuEIvebDsl9pUt2DBa8s1n5fAyS5MuW6XORZ3sbHy_Rywpg3tzA/exec";
+        "https://script.google.com/macros/s/AKfycbyRUP3U2xjQvuV3G1qqIarlzH5Vew4TI9J6224hx76iIQt7LS2No5OIOUda4DIIQBClfQ/exec";
+      // "https://script.google.com/macros/s/AKfycbwISw7fAhbA1-t0UuEIvebDsl9pUt2DBa8s1n5fAyS5MuW6XORZ3sbHy_Rywpg3tzA/exec";
       // "https://script.google.com/macros/s/AKfycbxeO9ipXgOmIGqKNrW4eW177Qlb2n2PqTPSY1RTrG7Hnpfowp9bALeJn7GJOytm1oQ/exec";
       const googleFormData = new URLSearchParams();
       googleFormData.append("NAME", values.name);
@@ -53,8 +54,7 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
 
       const res2 = await fetch(
         // "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0MzE1MjZlNTUzYzUxMzIi_pc",
-        // "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0MzE1MjZlNTUzYzUxMzIi_pc",
-
+        "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0MzE1MjZlNTUzYzUxMzIi_pc",
         {
           method: "POST",
           body: pabbly,
@@ -78,8 +78,8 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
 
       // Construct the request payload
       var payload = {
-        // to: "ceo@boostmysites.com",
-        to: "remeesreme4u@gmail.com",
+        to: "ceo@boostmysites.com",
+        // to: "remeesreme4u@gmail.com",
         subject: "Form Submission - Boostmysites E-Book Lead",
         body: emailBody,
       };
