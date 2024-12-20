@@ -40,6 +40,14 @@ const FormSection = ({ emailIdToSendMail, sourceName }) => {
       googleFormData.append("NAME", values.name);
       googleFormData.append("EMAILID", values.email);
       googleFormData.append("WHATSAPP", "91" + values.phone);
+      const savedPhoneNumber = localStorage.getItem("savedPhoneNumber");
+      if (savedPhoneNumber === values.phone) {
+        toast.error(
+          "We've already sent you an e-book on this number. Please check your WhatsApp."
+        );
+        setSpinner(false);
+        return;
+      }
       const pabbly = new URLSearchParams();
       pabbly.append("name", values.name);
       pabbly.append("email", values.email);
@@ -100,6 +108,7 @@ const FormSection = ({ emailIdToSendMail, sourceName }) => {
             setIsFormSubmit(true);
 
             reset();
+            localStorage.setItem("savedPhoneNumber", values.phone);
           }
         })
         .catch((error) => {

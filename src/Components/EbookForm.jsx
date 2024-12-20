@@ -31,16 +31,20 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
 
       const googleFormURL =
         "https://script.google.com/macros/s/AKfycbz6NVs95FTO85eh_hXSkHY-qRxxM3yNk4UulJ3GMdAc3ADAKKTOhJvAFkR1mlCWvwaS/exec";
-      // "https://script.google.com/macros/s/AKfycbwGogCOdrBOUAas9uYb9oL4eGNBc5XAiu1Mb-JewqgSBhhoVgD2iIwWtcrR4J0S5t6d/exec";
-      // og one  "https://script.google.com/macros/s/AKfycbyRUP3U2xjQvuV3G1qqIarlzH5Vew4TI9J6224hx76iIQt7LS2No5OIOUda4DIIQBClfQ/exec";
-      // "https://script.google.com/macros/s/AKfycbwISw7fAhbA1-t0UuEIvebDsl9pUt2DBa8s1n5fAyS5MuW6XORZ3sbHy_Rywpg3tzA/exec";
-      // "https://script.google.com/macros/s/AKfycbxeO9ipXgOmIGqKNrW4eW177Qlb2n2PqTPSY1RTrG7Hnpfowp9bALeJn7GJOytm1oQ/exec";
       const googleFormData = new URLSearchParams();
       googleFormData.append("NAME", values.name);
       googleFormData.append("EMAILID", values.email);
       googleFormData.append("WHATSAPP", "91" + values.phone);
 
-      // Send POST request with the correct headers
+      const savedPhoneNumber = localStorage.getItem("savedPhoneNumber");
+      if (savedPhoneNumber === values.phone) {
+        toast.error(
+          "We've already sent you an e-book on this number. Please check your WhatsApp."
+        );
+        setSpinner(false);
+        return;
+      }
+
       const res = await fetch(googleFormURL, {
         method: "POST",
         body: googleFormData,
@@ -49,26 +53,23 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
         },
         redirect: "follow",
       });
+
       const pabbly = new URLSearchParams();
       pabbly.append("name", values.name);
       pabbly.append("email", values.email);
       pabbly.append("whatsapp", "91" + values.phone);
 
       const res2 = await fetch(
-        // "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0MzE1MjZlNTUzYzUxMzIi_pc",
         "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzMjA0MzA1MjY0NTUzZDUxMzQi_pc",
         {
           method: "POST",
           body: pabbly,
           headers: {
-            "Content-Type": "application/x-www-form-urlencoded", // Ensure content type is correct
+            "Content-Type": "application/x-www-form-urlencoded",
           },
         }
       );
       console.log(res, res2);
-      //whatapp automation start here
-
-      // Endwhatapp automation start here
 
       var emailBody = "Name: " + values.name + "\n\n";
       emailBody += "Email: " + values.email + "\n\n";
@@ -78,15 +79,12 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
         emailBody += "Source: " + sourceName + "\n\n";
       }
 
-      // Construct the request payload
       var payload = {
         to: "ceo@boostmysites.com",
-        // to: "remeesreme4u@gmail.com",
         subject: "Form Submission - Boostmysites E-Book Lead",
         body: emailBody,
       };
 
-      // setIsLoading(true);
       await fetch("https://smtp-api-tawny.vercel.app/send-email", {
         method: "POST",
         headers: {
@@ -102,6 +100,8 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
             toast.success("Form submitted successfully.");
             setIsFormSubmit(true);
             reset();
+
+            localStorage.setItem("savedPhoneNumber", values.phone);
           }
         })
         .catch((error) => {
@@ -113,6 +113,7 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
       setSpinner(false);
     }
   };
+
   return (
     <div>
       <form
