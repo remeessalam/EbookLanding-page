@@ -66,7 +66,8 @@ const FormSection = ({ emailIdToSendMail, sourceName }) => {
       const res2 = await fetch(
         // "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0Mzc1MjZmNTUzMzUxMzAi_pc",
         // "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0MzE1MjZlNTUzYzUxMzIi_pc",
-        "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzMjA0MzA1MjY0NTUzZDUxMzQi_pc",
+        // "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzMjA0MzA1MjY0NTUzZDUxMzQi_pc",
+        "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzMzA0MzQ1MjZkNTUzNDUxMzAi_pc",
         {
           method: "POST",
           body: pabbly,
