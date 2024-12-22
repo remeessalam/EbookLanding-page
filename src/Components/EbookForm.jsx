@@ -30,8 +30,8 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
       setSpinner(true);
 
       const googleFormURL =
-        "https://script.google.com/macros/s/AKfycbzSQw1DUthJ354_g6zDdIgH6Im_Sa-F5e7df5wR_vUwKhxxqEO5jOiyZDEFOBVjDl61sw/exec";
-      // "https://script.google.com/macros/s/AKfycbz6NVs95FTO85eh_hXSkHY-qRxxM3yNk4UulJ3GMdAc3ADAKKTOhJvAFkR1mlCWvwaS/exec";
+        // "https://script.google.com/macros/s/AKfycbzSQw1DUthJ354_g6zDdIgH6Im_Sa-F5e7df5wR_vUwKhxxqEO5jOiyZDEFOBVjDl61sw/exec";
+        "https://script.google.com/macros/s/AKfycbz6NVs95FTO85eh_hXSkHY-qRxxM3yNk4UulJ3GMdAc3ADAKKTOhJvAFkR1mlCWvwaS/exec";
       const googleFormData = new URLSearchParams();
       googleFormData.append("NAME", values.name);
       googleFormData.append("EMAILID", values.email);
