@@ -82,8 +82,8 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
       }
 
       var payload = {
-        // to: "ceo@boostmysites.com",
-        to: "remeesreme4u@gmail.com",
+        to: "ceo@boostmysites.com",
+        // to: "remeesreme4u@gmail.com",
         subject: "Form Submission - Boostmysites E-Book Lead",
         body: emailBody,
       };
