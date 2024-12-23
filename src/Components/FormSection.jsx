@@ -28,7 +28,9 @@ const FormSection = ({ emailIdToSendMail, sourceName }) => {
   const onSubmit = async (values) => {
     try {
       setSpinner(true);
-
+      const isUserExistGoogleSheet =
+        "https://script.google.com/macros/s/AKfycbyRT-vbhhDsI4NOTClcUkAr8hFg74OViWiyTAN2PcgN6664FDlI96VQrpghTy3knz-y/exec";
+      // "https://script.google.com/macros/s/AKfycbzqVvHQvWtqVgsQ2Ten9J01iZg7sE3RYPHnrj1_VN7lkG7SfYlHXOZ-u4gtW7fuxXam/exec";
       const googleFormURL =
         "https://script.google.com/macros/s/AKfycbzSQw1DUthJ354_g6zDdIgH6Im_Sa-F5e7df5wR_vUwKhxxqEO5jOiyZDEFOBVjDl61sw/exec";
       //  last one "https://script.google.com/macros/s/AKfycbz6NVs95FTO85eh_hXSkHY-qRxxM3yNk4UulJ3GMdAc3ADAKKTOhJvAFkR1mlCWvwaS/exec";
@@ -43,9 +45,19 @@ const FormSection = ({ emailIdToSendMail, sourceName }) => {
       googleFormData.append("WHATSAPP", "91" + values.phone);
       const savedPhoneNumber = localStorage.getItem("savedPhoneNumber");
       if (savedPhoneNumber === values.phone) {
-        toast.error(
-          "We've already sent you an e-book on this number. Please check your WhatsApp."
-        );
+        await fetch(isUserExistGoogleSheet, {
+          method: "POST",
+          body: googleFormData,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded", // Ensure content type is correct
+          },
+          redirect: "follow",
+        });
+        // toast.error(
+        //   "We've already sent you an e-book on this number. Please check your WhatsApp."
+        // );
+        toast.success("Form submitted successfully.");
+        reset();
         setSpinner(false);
         return;
       }
