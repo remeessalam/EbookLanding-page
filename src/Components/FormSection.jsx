@@ -56,25 +56,22 @@ const FormSection = ({ emailIdToSendMail, sourceName }) => {
         // toast.error(
         //   "We've already sent you an e-book on this number. Please check your WhatsApp."
         // );
-        toast.success("Form submitted successfully.");
-        reset();
-        setSpinner(false);
-        return;
+      } else {
+        // Send POST request with the correct headers
+        await fetch(googleFormURL, {
+          method: "POST",
+          body: googleFormData,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded", // Ensure content type is correct
+          },
+          redirect: "follow",
+        });
       }
       const pabbly = new URLSearchParams();
       pabbly.append("name", values.name);
       pabbly.append("email", values.email);
       pabbly.append("whatsapp", "91" + values.phone);
 
-      // Send POST request with the correct headers
-      const res = await fetch(googleFormURL, {
-        method: "POST",
-        body: googleFormData,
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded", // Ensure content type is correct
-        },
-        redirect: "follow",
-      });
       const res2 = await fetch(
         // "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0Mzc1MjZmNTUzMzUxMzAi_pc",
         // "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzNTA0MzE1MjZlNTUzYzUxMzIi_pc",
@@ -88,7 +85,7 @@ const FormSection = ({ emailIdToSendMail, sourceName }) => {
           },
         }
       );
-      console.log(res2, res);
+      console.log(res2);
       var emailBody = "Name: " + values.name + "\n\n";
       emailBody += "Email: " + values.email + "\n\n";
       emailBody += "Phone Number: " + values.phone + "\n\n";

@@ -52,20 +52,19 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
         // toast.error(
         //   "We've already sent you an e-book on this number. Please check your WhatsApp."
         // );
-        toast.success("Form submitted successfully.");
+        // toast.success("Form submitted successfully.");
         reset();
         setSpinner(false);
-        return;
+      } else {
+        await fetch(googleFormURL, {
+          method: "POST",
+          body: googleFormData,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded", // Ensure content type is correct
+          },
+          redirect: "follow",
+        });
       }
-
-      const res = await fetch(googleFormURL, {
-        method: "POST",
-        body: googleFormData,
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded", // Ensure content type is correct
-        },
-        redirect: "follow",
-      });
 
       const pabbly = new URLSearchParams();
       pabbly.append("name", values.name);
@@ -83,7 +82,7 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
           },
         }
       );
-      console.log(res, res2);
+      console.log(res2);
 
       var emailBody = "Name: " + values.name + "\n\n";
       emailBody += "Email: " + values.email + "\n\n";
