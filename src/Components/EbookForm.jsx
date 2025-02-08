@@ -71,8 +71,10 @@ const EbookForm = ({ emailIdToSendMail, sourceName }) => {
       pabbly.append("email", values.email);
       pabbly.append("whatsapp", "91" + values.phone);
 
+      //pabbly link old one-> "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzMzA0MzQ1MjZkNTUzNDUxMzAi_pc",
+      // THIS IS NEW WEBHOOK LINK
       const res2 = await fetch(
-        "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzMzA0MzQ1MjZkNTUzNDUxMzAi_pc",
+        "https://hook.eu2.make.com/rxnkg1qfp36h1bu19tw2cejfjb654te8",
         // "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzMjA0MzA1MjY0NTUzZDUxMzQi_pc",
         {
           method: "POST",
